@@ -79,5 +79,12 @@ namespace hideRunning
             }
 
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            // 将窗体变为最小化
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
