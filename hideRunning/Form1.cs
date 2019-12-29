@@ -65,18 +65,6 @@ namespace hideRunning
         //三 转到窗体设计模式，右击notifyIcon1 ，选择属性，双击其中DoubleClick，添加相关代码
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Minimized;
-
-                this.Hide();
-            }
-            else if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.Show();
-                this.WindowState = FormWindowState.Normal;
-                this.Activate();
-            }
 
         }
 
@@ -85,6 +73,27 @@ namespace hideRunning
             e.Cancel = true;
             // 将窗体变为最小化
             this.WindowState = FormWindowState.Minimized;
+        }
+
+       
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)//判断鼠标的按键
+            {
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    this.WindowState = FormWindowState.Minimized;
+
+                    this.Hide();
+                }
+                else if (this.WindowState == FormWindowState.Minimized)
+                {
+                    this.Show();
+                    this.WindowState = FormWindowState.Normal;
+                    this.Activate();
+                }
+            }
         }
     }
 }
